@@ -21,7 +21,7 @@
                         <div class="board-row">
                             {#each x as y}
                                 <div class="board-col">
-                                    {y.display}
+                                    {y}
                                 </div>
                             {/each}
                         </div>
