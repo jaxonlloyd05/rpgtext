@@ -29,7 +29,7 @@
     <div class="game-mid">
         <div class="game-mid-left">
             <div class="game-header">
-                <h1>Stage 3: For the realm of kings and men</h1>
+                <h1>Stage </h1>
                 <span>hp: </span>
                 <span>def: </span>
                 <span>att: </span>
