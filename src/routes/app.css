@@ -31,6 +31,7 @@ body {
     transform: translateX(-50%);
     top: 50%;
     transform: translate(-50%, -50%);
+    max-height: 100%;
 }
 
 .game-mid {

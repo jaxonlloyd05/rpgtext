@@ -1,6 +1,6 @@
 /** gane configs */
 const GAME_MAX_LEVEL = 70;
-const BOARD_ROWS = 20;
+const BOARD_ROWS = 50;
 const BOARD_COLS = 50;
 
 const DRUNKARD_COVERAGE = 0.42;
@@ -19,12 +19,8 @@ export const free_spaces = (board: Tile[][]) => board.flatMap((row, y) =>
     )
 )
 
-const spawn_tiles = (board: Tile[][]) => {
-    // player 
-    const free = free_spaces(board);
-    const p_xy = free[Math.floor(Math.random() * free.length)];
-
-    board[p_xy.y][p_xy.x] = Tile.Player;
+export const is_free = (board: Tile[][], x: number, y: number) => {
+    return board[y][x] === Tile.Free
 }
 
 const random_step = () => {
@@ -64,6 +60,5 @@ const drunkard_generate = () => {
 export const create_floor = (floor_number: number) => {
     const blank_map = drunkard_generate();
     
-    spawn_tiles(blank_map);
     return blank_map;
 }

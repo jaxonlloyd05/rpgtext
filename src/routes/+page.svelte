@@ -1,9 +1,28 @@
 <script lang="ts">
     import "./app.css";
-    import { create_floor } from "$lib/components/world";
-    
-    const board = create_floor(1);
+    import { Player } from "$lib/components/player";
+    import { Tile } from "$lib/components/world";
 
+    const player = new Player();
+    let board: Tile[][];
+
+    const get_board = () => {
+        board = player.get_board_display();
+    }
+
+    const DIR = {
+        UP: [0, -1] as const,
+        DOWN: [0, 1] as const,
+        LEFT: [-1, 0] as const,
+        RIGHT: [1, 0] as const
+    };
+
+    const move_player = ([dx, dy]: readonly [number, number]) => {
+        player.move(dx, dy);
+        get_board();
+    }
+
+    get_board();
 </script>
 
 <div class="game">
@@ -11,9 +30,9 @@
         <div class="game-mid-left">
             <div class="game-header">
                 <h1>Stage 3: For the realm of kings and men</h1>
-                <span>hp: 100</span>
-                <span>def: 2</span>
-                <span>att: 3</span>
+                <span>hp: </span>
+                <span>def: </span>
+                <span>att: </span>
             </div>
             <div class="game-card">
                 <div class="game-board">
@@ -26,29 +45,16 @@
                             {/each}
                         </div>
                     {/each}
+                    <div class="game-controls">
+                        <button on:click={_ => move_player(DIR.LEFT)}>left</button>
+                        <button on:click={_ => move_player(DIR.UP)}>up</button>
+                        <button on:click={_ => move_player(DIR.DOWN)}>down</button>
+                        <button on:click={_ => move_player(DIR.RIGHT)}>right</button>
+                    </div>
                 </div>
             </div>
             <div class="game-top">
-                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
-                                <span>- cooked (-1hp)</span>
-                <span>- cooked (but winning +1hp)</span>
+                <span>Hello :)</span>
             </div>
         </div>
 
